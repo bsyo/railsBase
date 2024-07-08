@@ -2,65 +2,55 @@ source 'https://rubygems.org'
 
 ruby '3.3.0'
 
-# Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem 'rails', '~> 7.1.3'
+# Rails and core gems
+gem 'acts_as_paranoid'                  # Soft delete records
+gem 'bootsnap', require: false          # Reduces boot times through caching
+gem 'importmap-rails'                   # Use JavaScript with ESM import maps
+gem 'jbuilder'                          # Build JSON APIs with ease
+gem 'mysql2', '~> 0.5'                  # MySQL database adapter
+gem 'puma', '>= 5.0'                    # Web server for Rails
+gem 'rails', '~> 7.1.3'                 # Full-stack web application framework
+gem 'sprockets-rails'                   # Asset pipeline for Rails
+gem 'stimulus-rails'                    # Hotwire's modest JavaScript framework
+gem 'tailwindcss-rails'                 # Integrates Tailwind CSS with Rails asset pipeline
+gem 'turbo-rails'                       # Hotwire's SPA-like page accelerator
+gem 'tzinfo-data', platforms: %i[mswin mswin64 mingw x64_mingw jruby] # Timezone data for Windows
 
-# The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
-gem 'sprockets-rails'
-
-# Use mysql as the database for Active Record
-gem 'mysql2', '~> 0.5'
-
-# Use the Puma web server [https://github.com/puma/puma]
-gem 'puma', '>= 5.0'
-
-# Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
-gem 'importmap-rails'
-
-# Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem 'turbo-rails'
-
-# Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
-gem 'stimulus-rails'
-
-# Use Tailwind CSS [https://github.com/rails/tailwindcss-rails]
-gem 'tailwindcss-rails'
-
-# Build JSON APIs with ease [https://github.com/rails/jbuilder]
-gem 'jbuilder'
-
-# Use Redis adapter to run Action Cable in production
-# gem "redis", ">= 4.0.1"
-
-# Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
-# gem "kredis"
-
-# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
-# gem "bcrypt", "~> 3.1.7"
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: %i[mswin mswin64 mingw x64_mingw jruby]
-
-# Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', require: false
-
-# Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
-
-group :development, :test do
-  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem 'debug', platforms: %i[mri mswin mswin64 mingw x64_mingw]
-end
+# Uncomment these if needed
+# gem "redis", ">= 4.0.1"               # Redis adapter for Action Cable
+# gem "kredis"                          # Higher-level data types in Redis
+# gem "bcrypt", "~> 3.1.7"              # Use Active Model has_secure_password
+# gem "image_processing", "~> 1.2"      # Use Active Storage variants
 
 group :development do
-  # Use console on exceptions pages [https://github.com/rails/web-console]
-  gem 'web-console'
+  gem 'annotate' # Add schema information to model files
+  gem 'better_errors' # Provides better error pages
+  gem 'binding_of_caller' # Retrieve the binding of a method's caller in Better Errors
+  gem 'brakeman' # Static analysis security vulnerability scanner
+  gem 'bullet' # Help to kill N+1 queries and unused eager loading
+  gem 'error_highlight', '>= 0.4.0', platforms: [:ruby] # Highlight syntax errors
+  gem 'memory_profiler' # Memory profiling for Ruby
+  gem 'pry-rails' # Use Pry as your rails console
+  gem 'rack-mini-profiler' # Profiling information for your Rails app
+  gem 'rails-erd' # Generate Entity-Relationship Diagrams
+  gem 'rubocop', require: false # Ruby static code analyzer and formatter
+  gem 'rubocop-rails', require: false # Rails-specific RuboCop cops
+  gem 'web-console' # Access an IRB console on exception pages or by using <%= console %> anywhere
 
-  # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
-  # gem "rack-mini-profiler"
+  # Uncomment if needed
+  # gem "spring"                        # Rails application preloader
+  # gem "rack-mini-profiler"            # Performance information on your Rails pages
+end
 
-  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
-  # gem "spring"
+group :development, :test do
+  gem 'debug', platforms: %i[mri mswin mswin64 mingw x64_mingw] # Debugging functionality
+  gem 'factory_bot_rails'               # A library for setting up Ruby objects as test data
+  gem 'faker'                           # A library for generating fake data
+end
 
-  gem 'error_highlight', '>= 0.4.0', platforms: [:ruby]
+group :test do
+  gem 'capybara'                        # Integration testing tool for web applications
+  gem 'rspec-rails'                     # RSpec testing framework for Rails
+  gem 'shoulda-matchers'                # Collection of testing matchers
+  gem 'webdrivers'                      # Run Selenium tests more easily
 end
