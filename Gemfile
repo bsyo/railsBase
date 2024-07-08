@@ -31,7 +31,7 @@ group :development do
   gem 'error_highlight', '>= 0.4.0', platforms: [:ruby] # Highlight syntax errors
   gem 'memory_profiler' # Memory profiling for Ruby
   gem 'pry-rails' # Use Pry as your rails console
-  gem 'rack-mini-profiler' # Profiling information for your Rails app
+  gem 'rack-mini-profiler', require: false # Profiling information for your Rails app
   gem 'rails-erd' # Generate Entity-Relationship Diagrams
   gem 'rubocop', require: false # Ruby static code analyzer and formatter
   gem 'rubocop-rails', require: false # Rails-specific RuboCop cops
