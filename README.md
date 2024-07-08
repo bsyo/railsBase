@@ -155,8 +155,7 @@ After running `bundle install`, follow these steps to set up and configure the g
 12. Rack Mini Profiler
     It should work out of the box, but you can customize it by creating an initializer:
     ```ruby
-    # config/initializers/mini_profiler.rb
-    Rack::MiniProfiler.config.position = 'bottom-right'
+bundle exec rails g rack_mini_profiler:install
     ```
 
 13. Acts As Paranoid
