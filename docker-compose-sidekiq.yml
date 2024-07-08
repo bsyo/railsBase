@@ -1,0 +1,19 @@
+version: '3'
+services:
+  sidekiq:
+    build: .
+    command: bundle exec sidekiq -C config/sidekiq.yml
+    volumes:
+      - .:/rails
+      - "./data/sidekiq:/data"
+    depends_on:
+      - db
+      - redis
+    environment:
+      DATABASE_HOST: db
+      DATABASE_USERNAME: docker
+      DATABASE_PASSWORD: docker
+      REDIS_URL: redis://redis:6379
+  app:
+    depends_on:
+      - sidekiq
