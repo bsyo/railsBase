@@ -1,16 +1,15 @@
 # syntax = docker/dockerfile:1
 
-# Make sure it matches your local Ruby version
-ARG RUBY_VERSION=3.3.0
-FROM ruby:$RUBY_VERSION-slim as base
+# Make sure RUBY_VERSION matches the Ruby version in .ruby-version and Gemfile
+ARG RUBY_VERSION=3.3.1
+FROM registry.docker.com/library/ruby:$RUBY_VERSION-slim as base
 
 # Rails app lives here
 WORKDIR /rails
 
 # Set production environment
-ENV RAILS_ENV="production" \
-    BUNDLE_WITHOUT="development:test" \
-    BUNDLE_DEPLOYMENT="1"
+ENV RAILS_ENV="development" \
+    BUNDLE_WITHOUT=""
 
 # Update gems and bundler
 RUN gem update --system --no-document && \
@@ -26,12 +25,16 @@ RUN apt-get update -qq && \
 
 # Install application gems
 COPY Gemfile Gemfile.lock ./
-RUN bundle install && \
+RUN bundle config set --local without '' && \
+    bundle install && \
     bundle exec bootsnap precompile --gemfile && \
-    rm -rf ~/.bundle/ $BUNDLE_PATH/ruby/*/cache $BUNDLE_PATH/ruby/*/bundler/gems/*/.git
+    rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git
 
 # Copy application code
 COPY . .
+
+# Ensure Tailwind CSS is installed and configured
+RUN bundle exec rails tailwindcss:install
 
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/

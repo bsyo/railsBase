@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '3.3.0'
+ruby '3.3.1'
 
 # Rails and core gems
 gem 'acts_as_paranoid'                  # Soft delete records
