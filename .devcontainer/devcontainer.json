@@ -1,0 +1,43 @@
+{
+  "name": "Rails Development",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/rails",
+  "customizations": {
+      "vscode": {
+          "extensions": [
+              "rebornix.Ruby",
+              "castwide.solargraph",
+              "kaiwood.endwise",
+              "aki77.rails-db-schema",
+              "hridoy.rails-snippets",
+              "sporto.rails-go-to-spec",
+              "vortizhe.simple-ruby-erb",
+              "anwar.papyrus",
+              "bradlc.vscode-tailwindcss",
+              "misogi.ruby-rubocop",
+              "bung87.vscode-gemfile",
+              "wingrunr21.vscode-ruby"
+          ],
+          "settings": {
+              "editor.formatOnSave": true,
+              "ruby.useBundler": true,
+              "ruby.useLanguageServer": true,
+              "ruby.lint": {
+                  "rubocop": {
+                      "useBundler": true
+                  }
+              },
+              "ruby.format": "rubocop",
+              "[ruby]": {
+                  "editor.defaultFormatter": "misogi.ruby-rubocop"
+              },
+              "files.associations": {
+                  "*.erb": "erb"
+              }
+          }
+      }
+  },
+  "postCreateCommand": "bundle install && bin/rails db:prepare",
+  "remoteUser": "rails"
+}
