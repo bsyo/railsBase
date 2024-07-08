@@ -2,11 +2,12 @@
 
 if ! gem list foreman -i --silent; then
   echo "Installing foreman..."
-  gem install foreman
+  gem install foreman --user-install
 fi
 
 # Default to port 3000 if not specified
 export PORT="${PORT:-3000}"
+export PATH="$HOME/.local/share/gem/ruby/3.3.0/bin:$PATH"
 
 # Let the debug gem allow remote connections,
 # but avoid loading until `debugger` is called

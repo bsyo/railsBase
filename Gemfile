@@ -29,12 +29,14 @@ group :development do
   gem 'brakeman' # Static analysis security vulnerability scanner
   gem 'bullet' # Help to kill N+1 queries and unused eager loading
   gem 'error_highlight', '>= 0.4.0', platforms: [:ruby] # Highlight syntax errors
+  gem 'flamegraph' # Generate flame graphs for your Ruby apps
   gem 'memory_profiler' # Memory profiling for Ruby
   gem 'pry-rails' # Use Pry as your rails console
   gem 'rack-mini-profiler', require: false # Profiling information for your Rails app
   gem 'rails-erd' # Generate Entity-Relationship Diagrams
   gem 'rubocop', require: false # Ruby static code analyzer and formatter
   gem 'rubocop-rails', require: false # Rails-specific RuboCop cops
+  gem 'stackprof' # For call-stack profiling flamegraphs
   gem 'web-console' # Access an IRB console on exception pages or by using <%= console %> anywhere
 
   # Uncomment if needed

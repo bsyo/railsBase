@@ -155,7 +155,7 @@ After running `bundle install`, follow these steps to set up and configure the g
 12. Rack Mini Profiler
     It should work out of the box, but you can customize it by creating an initializer:
     ```ruby
-bundle exec rails g rack_mini_profiler:install
+    bundle exec rails g rack_mini_profiler:install
     ```
 
 13. Acts As Paranoid
